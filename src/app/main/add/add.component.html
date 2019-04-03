@@ -1,0 +1,64 @@
+<div class="ed-add">
+  <form [formGroup]="wordForm" (ngSubmit)="addWord()">
+    <div class="ed-word-box">
+      <label for="ed-word">Word</label>
+      <input id="ed-word" type="text" formControlName="edWord" />
+    </div>
+    <div class="ed-meaning-box">
+        <label for="ed-meaning">Meaning</label>
+        <textarea id="ed-meaning" type="text" formControlName="edMeaning"></textarea>
+      </div>
+    <div class="ed-word-class-box">
+      <label for="ed-word-class">Word classe</label>
+      <select id="ed-word-class" formControlName="edWordClass">
+        <option value="verb">Verb</option>
+        <option value="noun">Noun</option>
+        <option value="determiner">Determiner</option>
+        <option value="adverb">Adverb</option>
+        <option value="pronoun">Pronoun</option>
+        <option value="preposition">Preposition</option>
+        <option value="conjunction">Conjunction</option>
+        <option value="interjection">Interjection</option>
+      </select>
+    </div>
+    <div formGroupName="edPronounciations">
+      <div class="ed-ipa-box">
+        <label for="ed-ipa">IPA</label>
+        <input type="text" formControlName="edIpa" id="ed-ipa" />
+      </div>
+      <div class="ed-english-pronounciation-box">
+        <label for="ed-english-pronounciation">English Pronounciation</label>
+        <input type="file" formControlName="edEnglishPronounciation" id="ed-english-pronounciation" />
+      </div>
+      <div class="ed-british-pronounciation-box">
+        <label for="ed-british-pronounciation">British Pronounciation</label>
+        <input type="file" formControlName="edBritishPronounciation" id="ed-british-pronounciation" />
+      </div>
+    </div>
+
+    <div formArrayName="edSynonyms">
+      <button (click)="addSynonym()">Add synonym</button>
+
+      <div *ngFor="let synonym of edSynonyms.controls; let i=index">
+        <!-- The repeated alias template -->
+        <label>
+            Synonym:
+          <input type="text" [formControlName]="i">
+        </label>
+      </div>
+    </div>
+    <div formArrayName="edAntonyms">
+        <button (click)="addAntonym()">Add synonym</button>
+
+        <div *ngFor="let antonym of edAntonyms.controls; let i=index">
+          <!-- The repeated alias template -->
+          <label>
+              Antonym:
+            <input type="text" [formControlName]="i">
+          </label>
+        </div>
+      </div>
+
+    <button type="submit" [disabled]="!wordForm.valid">Add Word</button>
+  </form>
+</div>
