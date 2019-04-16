@@ -5,7 +5,7 @@ import { FormArray } from '@angular/forms';
 
 class EdWordValidator {
   static cannotContainNumbers(control: AbstractControl) {
-    if(RegExp('^([^0-9]*)$').test(control.value as string)) {
+    if (RegExp('^([^0-9]*)$').test(control.value as string)) {
       return {cannotContainNumbers: true};
     }
     return null;
@@ -84,7 +84,7 @@ export class AddComponent implements OnInit {
     this.edSynonyms.push(new FormControl());
   }
 
-  addAntonym(e) {
+  addAntonym() {
     this.edAntonyms.push(new FormControl());
   }
   ngOnInit() {
