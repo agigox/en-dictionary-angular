@@ -1,12 +1,19 @@
 <div class="ed-add">
-  <form [formGroup]="wordForm" (ngSubmit)="addWord()">
+  <form [formGroup]="wordForm">
     <div class="ed-word-box">
       <label for="ed-word">Word</label>
       <input id="ed-word" type="text" formControlName="edWord" />
+      <div *ngIf="edWord.touched && edWord.invalid">
+        <div *ngIf="edWord.errors?.required">Word is required</div>
+        <div *ngIf="edWord.errors?.minlength">Word should be Minimum {{edWord.errors.minlength.requiredLength}} characters</div>
+      </div>
     </div>
     <div class="ed-meaning-box">
         <label for="ed-meaning">Meaning</label>
-        <textarea id="ed-meaning" type="text" formControlName="edMeaning"></textarea>
+        <textarea id="ed-meaning" formControlName="edMeaning"></textarea>
+        <div *ngIf="edMeaning.touched && edMeaning.invalid">
+          <div *ngIf="edMeaning.errors?.required">Word is required</div>
+        </div>
       </div>
     <div class="ed-word-class-box">
       <label for="ed-word-class">Word classe</label>
@@ -20,19 +27,31 @@
         <option value="conjunction">Conjunction</option>
         <option value="interjection">Interjection</option>
       </select>
+      <div *ngIf="edWordClass.touched && edWordClass.invalid">
+        <div *ngIf="edWordClass.errors?.required">Word is required</div>
+      </div>
     </div>
     <div formGroupName="edPronounciations">
       <div class="ed-ipa-box">
         <label for="ed-ipa">IPA</label>
         <input type="text" formControlName="edIpa" id="ed-ipa" />
       </div>
+      <div *ngIf="edIpa.touched && edIpa.invalid">
+        <div *ngIf="edIpa.errors?.required">Word is required</div>
+      </div>
       <div class="ed-english-pronounciation-box">
         <label for="ed-english-pronounciation">English Pronounciation</label>
-        <input type="file" formControlName="edEnglishPronounciation" id="ed-english-pronounciation" />
+        <input type="text" formControlName="edEnglishPronounciation" id="ed-english-pronounciation" />
+      </div>
+      <div *ngIf="edEnglishPronounciation.touched && edEnglishPronounciation.invalid">
+        <div *ngIf="edEnglishPronounciation.errors?.required">Word is required</div>
       </div>
       <div class="ed-british-pronounciation-box">
         <label for="ed-british-pronounciation">British Pronounciation</label>
-        <input type="file" formControlName="edBritishPronounciation" id="ed-british-pronounciation" />
+        <input type="text" formControlName="edBritishPronounciation" id="ed-british-pronounciation" />
+      </div>
+      <div *ngIf="edBritishPronounciation.touched && edBritishPronounciation.invalid">
+        <div *ngIf="edBritishPronounciation.errors?.required">Word is required</div>
       </div>
     </div>
 
@@ -59,6 +78,6 @@
         </div>
       </div>
 
-    <button type="submit" [disabled]="!wordForm.valid">Add Word</button>
+    <button type="submit" (click)="addWord()" [disabled]="!wordForm.valid">Add Word</button>
   </form>
 </div>

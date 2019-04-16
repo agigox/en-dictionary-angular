@@ -8,6 +8,7 @@ import { AddComponent } from './main/add/add.component';
 import { StatisticComponent } from './main/statistic/statistic.component';
 import { QuizComponent } from './main/quiz/quiz.component';
 import { SearchComponent } from './main/search/search.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchComponent } from './main/search/search.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
