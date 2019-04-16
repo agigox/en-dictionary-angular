@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBil3zXsfJTHcDYMFNMfy-q35nx9aoaU5s',
+    authDomain: 'english-dictionary-tabou.firebaseapp.com',
+    databaseURL: 'https://english-dictionary-tabou.firebaseio.com',
+    projectId: 'english-dictionary-tabou',
+    storageBucket: '',
+    messagingSenderId: '781574142861'
+  }
 };
 
 /*

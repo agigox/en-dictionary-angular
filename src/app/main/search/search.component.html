@@ -1,3 +1,7 @@
 <div class="ed-search">
-  search works!
+  <ul>
+    <li *ngFor="let word of words | async">
+      {{ word.name }}
+    </li>
+  </ul>
 </div>
